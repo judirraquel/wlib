@@ -1,0 +1,8 @@
+@import "widget.css";
+@import "label.css";
+@import "button.css";
+
+div.WLibRoot{
+    background: rgb(34,37,49);
+    background: linear-gradient(180deg, rgba(34,37,49,1) 0%, rgba(23,23,26,1) 58%);
+}

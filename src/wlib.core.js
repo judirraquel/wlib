@@ -35,6 +35,7 @@ class WebLib {
         };
 
         this.LoadFonts ();
+        this.LoadIcons ();
 
     }
 
@@ -54,6 +55,15 @@ class WebLib {
             document.fonts.add(loadedFont)
         });
 
+    }
+
+    LoadIcons () {
+        let head = document.getElementsByTagName('HEAD')[0]; 
+        let link = document.createElement('link');
+        link.rel = 'stylesheet'; 
+        link.type = 'text/css';
+        link.href = "icons/icons.css"; 
+        head.appendChild(link); 
     }
 
     LoadTheme (args) {

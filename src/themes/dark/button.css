@@ -1,0 +1,66 @@
+
+div.WLibWidgetButtonPrimary {
+    border-radius: 5px;
+    color: #fff;
+    background-color: #3861FB;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+  }
+  
+  div.WLibWidgetButtonPrimary_mouse_over {
+      border-radius: 5px;
+      color: #fff;
+      background-color: #486DFB;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: .15rem;
+      transition: all .3s;
+  }
+
+  div.WLibWidgetButtonSecondary {
+    border-radius: 5px;
+    color: #fff;
+    background-color: #323546;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+  }
+  
+  div.WLibWidgetButtonSecondary_mouse_over {
+      border-radius: 5px;
+      color: #fff;
+      background-color: #2B2E39;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: .15rem;
+      transition: all .3s;
+  }
+
+  div.WLibWidgetButtonDanger {
+    border-radius: 5px;
+    color: #fff;
+    background-color: #EA3943;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+  }
+  
+  div.WLibWidgetButtonDanger_mouse_over {
+      border-radius: 5px;
+      color: #fff;
+      background-color: #EA3D60;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: .15rem;
+      transition: all .3s;
+  }
