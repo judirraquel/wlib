@@ -60,8 +60,6 @@ let lbl6 = new WLibWidgetLabel({
     VAlign: WLibWidgetAlign.CUSTOM
 });
 
-//----------
-
 let lblA = new WLibWidgetLabel({
     Id: "MyLabelA",
     Text: "Column : 2, Row : 0",
@@ -86,8 +84,6 @@ let lblC = new WLibWidgetLabel({
     VAlign: WLibWidgetAlign.CUSTOM
 });
 
-//test_widget.setText ("hola");
-
 test_grid.Atach ({Column : 0, Row : 0, Widget : lbl1});
 test_grid.Atach ({Column : 1, Row : 0, Widget : lbl2});
 test_grid.Atach ({Column : 2, Row : 0, Widget : lblA});
@@ -105,4 +101,4 @@ test_grid.Display ();
 console.log(WLib.Root);
 console.log(test_grid);
 
-WLib.LoadTheme ('themes/light.css');
+WLib.LoadTheme ('themes/dark.css');
