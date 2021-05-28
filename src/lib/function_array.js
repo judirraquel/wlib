@@ -3,7 +3,7 @@ class FunctionArr{
         this.Items = new Array ();
     }
 
-    add (pFn) {
+    Add (pFn) {
         this.Items.push (pFn);
     }
 

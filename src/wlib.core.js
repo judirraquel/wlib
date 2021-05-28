@@ -16,7 +16,7 @@ class WebLib {
         this.Types = WLibTypes;
         this.Page = new WLibPage ();
 
-        this.Root = new WLibWidget({Id : 'root'});
+        this.Root = new WLibWidget({Id : 'root', Parent : this.Page});
 
     }
 
@@ -26,8 +26,12 @@ class WebLib {
 
     Init () {
 
-        window.onload = function(){
+        window.onload = function() {
             WLib.Page.whenLoad.Run();
+        };
+
+        window.onresize = function () {
+            WLib.Page.whenResize.Run();
         };
 
     }

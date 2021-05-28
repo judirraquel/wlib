@@ -1,25 +1,106 @@
 import { WLib } from "./wlib.core.js";
-import { WLibWidget, WLibWidgetAlign } from "./lib/ui/widget.js";
+import { WLibWidgetAlign } from "./lib/ui/widget.js";
+import { WLibWidgetLabel } from "./lib/ui/label.js";
+import { WLibWidgetGrid } from "./lib/ui/grid.js";
 
-let newfn = new WLib.Types.FunctionItem ({id : 'a', fn : function (args){
+let test_grid = new WLibWidgetGrid ({
+    Id: "MyGrid",
+    Parent: WLib.Root,
+    HAlign: WLibWidgetAlign.FILL,
+    VAlign: WLibWidgetAlign.FILL,
+    Columns : [{ Width: 100 }, { Width: undefined }, { Width: 100 }],
+    Rows : [{ Height: 25 }, { Height: undefined }, { Height: 25 }]
+});
 
-    console.log ('Hola, el parametro es:' + args.test);
+let lbl1 = new WLibWidgetLabel({
+    Id: "MyLabel1",
+    Text: "Columna 0, Fila 0",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-}, parameters : {test : 12.5}});
+let lbl2 = new WLibWidgetLabel({
+    Id: "MyLabel2",
+    Text: "Column : 1, Row : 0",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-let newfn2 = new WLib.Types.FunctionItem ({id : 'b', fn : function (args){
+let lbl3 = new WLibWidgetLabel({
+    Id: "MyLabel3",
+    Text: "Column : 0, Row : 1",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-    console.log ('Hola, el parametro de la segunda funcion es:' + args.test);
+let lbl4 = new WLibWidgetLabel({
+    Id: "MyLabel4",
+    Text: "Column : 1, Row : 1",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-}, parameters : {test : 21.5}});
+let lbl5 = new WLibWidgetLabel({
+    Id: "MyLabel5",
+    Text: "Column : 0, Row : 2",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
+let lbl6 = new WLibWidgetLabel({
+    Id: "MyLabel6",
+    Text: "Column : 1, Row : 2",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-//WLib.Get(document).whenMouseUp.add (newfn);
-//WLib.Get(document).whenMouseMove.add (newfn2);
+//----------
 
-let  test_widget = new WLibWidget({Id : 'test_widget', Parent : WLib.Root, HAlign : WLibWidgetAlign.CENTER, VAlign : WLibWidgetAlign.CENTER, Left : 100, Top : 50, Width : 100, Height : 30});
+let lblA = new WLibWidgetLabel({
+    Id: "MyLabelA",
+    Text: "Column : 2, Row : 0",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-test_widget.Body.html ("hola");
+let lblB = new WLibWidgetLabel({
+    Id: "MyLabelB",
+    Text: "Column : 2, Row : 1",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
 
-console.log (WLib.Root);
-console.log (test_widget);
+let lblC = new WLibWidgetLabel({
+    Id: "MyLabelC",
+    Text: "Column : 2, Row : 2",
+    Parent: test_grid,
+    HAlign: WLibWidgetAlign.CUSTOM,
+    VAlign: WLibWidgetAlign.CUSTOM
+});
+
+//test_widget.setText ("hola");
+
+test_grid.Atach ({Column : 0, Row : 0, Widget : lbl1});
+test_grid.Atach ({Column : 1, Row : 0, Widget : lbl2});
+test_grid.Atach ({Column : 2, Row : 0, Widget : lblA});
+
+test_grid.Atach ({Column : 0, Row : 1, Widget : lbl3});
+test_grid.Atach ({Column : 1, Row : 1, Widget : lbl4});
+test_grid.Atach ({Column : 2, Row : 1, Widget : lblB});
+
+test_grid.Atach ({Column : 0, Row : 2, Widget : lbl5});
+test_grid.Atach ({Column : 1, Row : 2, Widget : lbl6});
+test_grid.Atach ({Column : 2, Row : 2, Widget : lblC});
+
+test_grid.Display ();
+
+console.log(WLib.Root);
+console.log(test_grid);

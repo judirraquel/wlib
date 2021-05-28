@@ -22,8 +22,6 @@ class WLibWidget {
         this.HAlign = args.HAlign ? args.HAlign : WLibWidgetAlign.FILL;
         this.VAlign = args.VAlign ? args.VAlign : WLibWidgetAlign.FILL;
 
-        //La posiscion y las dimensiones deberian autocaompletarse de acuerdo a los valores de halign y valign y de acuerdo al parent.
-
         this.Position = {
             Left : args.Left,
             Top : args.Top
@@ -38,7 +36,12 @@ class WLibWidget {
         this.Parent = args.Parent ? args.Parent : undefined; //Es un objeto del Tipo Widget. No es el elemento HTML.
 
         if (this.Id != 'root'){
-            this.Body = WLibHTMLObject.Get (this.Parent.Id).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
+            if (this.Parent.Id == 'root'){
+                this.Body = WLibHTMLObject.Get (this.Parent.Id).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
+            }else {
+                this.Body = WLibHTMLObject.Get (this.GetHTMLId(this.Parent.Id)).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
+            }
+            
         }else {
             this.Body = WLibHTMLObject.Get (args.Id);
         }
@@ -65,6 +68,7 @@ class WLibWidget {
 
     Init () {
         this.InitPosition ();
+        this.InitEvents ();
     }
 
     InitPosition () {
@@ -102,13 +106,10 @@ class WLibWidget {
                     this.Dimensions.Width = this.Parent.Dimensions.Width;
                 }else if (this.HAlign == WLibWidgetAlign.START){
                     this.Position.Left = 0;
-                    //En este caso dejo el width que se paso al constructor.
                 }else if (this.HAlign == WLibWidgetAlign.END){
                     this.Position.Left = this.Parent.Dimensions.Width - this.Dimensions.Width;
-                    //En este caso dejo el width que se paso al constructor.
                 }else if (this.HAlign == WLibWidgetAlign.CENTER){
                     this.Position.Left = parseInt((this.Parent.Dimensions.Width / 2) - (this.Dimensions.Width / 2));
-                    //En este caso dejo el width que se paso al constructor.
                 }
     
             }
@@ -120,18 +121,15 @@ class WLibWidget {
                     this.Dimensions.Height = this.Parent.Dimensions.Height;
                 }else if (this.VAlign == WLibWidgetAlign.START){
                     this.Position.Top = 0;
-                    //En este caso dejo el width que se paso al constructor.
                 }else if (this.VAlign == WLibWidgetAlign.END){
                     this.Position.Top = this.Parent.Dimensions.Height - this.Dimensions.Height;
-                    //En este caso dejo el width que se paso al constructor.
                 }else if (this.VAlign == WLibWidgetAlign.CENTER){
                     this.Position.Top = parseInt((this.Parent.Dimensions.Height / 2) - (this.Dimensions.Height / 2));
-                    //En este caso dejo el width que se paso al constructor.
                 }
     
             }
 
-            this.Body.style.position = 'relative';
+            this.Body.style.position = 'absolute';
             this.Body.style.overflow = 'hidden';
             this.Body.style.boxSizing = 'border-box';
             this.Body.style.margin = '0px';
@@ -146,12 +144,22 @@ class WLibWidget {
         
     }
 
+    InitEvents () {
+
+        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({fn : function (args){
+
+            args.Widget.Resize ();
+
+        }, parameters : {Widget : this}}));
+
+    }
+
     GetHTMLId (args){
         return (this.HTMLPrefix + args);
     }
 
-    setVisible (arg) {
-        this.Visible = arg;
+    setVisible (args) {
+        this.Visible = args;
     }
 
     Display (){
@@ -159,7 +167,34 @@ class WLibWidget {
     }
 
     Resize (args) {
+        this.InitPosition ();
+        this.whenResize.Run ();
+    }
 
+    Add (args) {
+        this.Childs.push (args);
+    }
+
+    setX (args) {
+        this.Position.Left = args;
+        this.Body.setX (args);
+    }
+
+    setY (args) {
+        this.Position.Top = args;
+        this.Body.setY (args);
+    }
+
+    setW (args) {
+        this.Dimensions.Width = args;
+        this.Body.setW (args);
+        this.Resize ();
+    }
+
+    setH (args) {
+        this.Dimensions.Height = args;
+        this.Body.setH (args);
+        this.Resize ();
     }
 
 }
