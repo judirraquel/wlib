@@ -38,12 +38,15 @@ class WLibWidget {
         if (this.Id != 'root'){
             if (this.Parent.Id == 'root'){
                 this.Body = WLibHTMLObject.Get (this.Parent.Id).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
+                this.Body.className = "WLibRoot";
             }else {
                 this.Body = WLibHTMLObject.Get (this.GetHTMLId(this.Parent.Id)).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
+                this.Body.className = "WLibWidget";
             }
             
         }else {
             this.Body = WLibHTMLObject.Get (args.Id);
+            this.Body.className = "WLibWidget";
         }
         
         this.whenResize = new WLibTypes.FunctionArray();
@@ -132,8 +135,6 @@ class WLibWidget {
             this.Body.style.position = 'absolute';
             this.Body.style.overflow = 'hidden';
             this.Body.style.boxSizing = 'border-box';
-            this.Body.style.margin = '0px';
-            this.Body.style.padding = '0px';
 
             this.Body.setX (this.Position.Left);
             this.Body.setY (this.Position.Top);

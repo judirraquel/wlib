@@ -34,6 +34,37 @@ class WebLib {
             WLib.Page.whenResize.Run();
         };
 
+        this.LoadFonts ();
+
+    }
+
+    LoadFonts () {
+
+        const Font = new FontFace('Roboto', 'url(font/Roboto-Regular.ttf)');
+        const FontBold = new FontFace('Roboto', 'url(font/Roboto-Bold.ttf');
+
+        FontBold.weight = 'bold';
+
+        Font.load().then(function(loadedFont) {
+            document.fonts.add(loadedFont)
+            WLib.Root.Body.style.fontFamily = '"Roboto"';
+        });
+
+        FontBold.load().then(function(loadedFont) {
+            document.fonts.add(loadedFont)
+        });
+
+    }
+
+    LoadTheme (args) {
+
+        let head = document.getElementsByTagName('HEAD')[0]; 
+        let link = document.createElement('link');
+        link.rel = 'stylesheet'; 
+        link.type = 'text/css';
+        link.href = args; 
+        head.appendChild(link); 
+
     }
 
 }

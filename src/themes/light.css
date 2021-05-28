@@ -1,0 +1,15 @@
+div.WLibRoot{
+    background: rgb(34,37,49);
+    background: linear-gradient(180deg, rgba(34,37,49,1) 0%, rgba(23,23,26,1) 58%);
+}
+
+div.WLibWidget{
+
+}
+
+div.WLibWidgetLabel{
+    color: white !important;
+    padding: 1mm;
+    text-align: start;
+    font-weight: normal;
+}

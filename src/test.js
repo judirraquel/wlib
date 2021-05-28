@@ -104,3 +104,5 @@ test_grid.Display ();
 
 console.log(WLib.Root);
 console.log(test_grid);
+
+WLib.LoadTheme ('themes/light.css');
