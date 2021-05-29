@@ -32,7 +32,7 @@ class WLibHTMLObject {
 
         obj.html = function(html){
             this.innerHTML = html;
-            this.whenResize.Run();
+            //this.whenResize.Run();
         };
 
         obj.isVisible = function() {
@@ -67,7 +67,7 @@ class WLibHTMLObject {
             if(parseInt(pw) < 1) return;
             obj.iWidth = pw;
             obj.style.width = pw + 'px';
-            obj.whenResize.Run();
+            //obj.whenResize.Run();
         };
 
         obj.setH = function(ph) {
@@ -75,7 +75,7 @@ class WLibHTMLObject {
             if(parseInt(ph) < 1) return;
             obj.iHeight = ph;
             obj.style.height = ph + 'px';
-            obj.whenResize.Run();
+            //obj.whenResize.Run();
         };
 
         obj.enableselection = function() {

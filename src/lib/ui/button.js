@@ -40,7 +40,7 @@ class WLibWidgetButton extends WLibWidget {
             args.Widget.Body.className = args.Widget.BaseClassName;
         }, parameters: {Widget : this}}));
 
-        this.whenResize.Add (new WLibTypes.FunctionItem({fn : function(args){
+        this.whenResize.Add (new WLibTypes.FunctionItem({Id : this.Id, fn : function(args){
             args.Widget.Body.style.lineHeight = args.Widget.Dimensions.Height + 'px';
         }, parameters: {Widget : this}}));
 

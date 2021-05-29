@@ -1,6 +1,7 @@
 @import "widget.css";
 @import "label.css";
 @import "button.css";
+@import "panel.css";
 
 div.WLibRoot{
     background: rgb(34,37,49);

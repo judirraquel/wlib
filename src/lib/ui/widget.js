@@ -38,7 +38,7 @@ class WLibWidget {
         if (this.Id != 'root'){
             if (this.Parent.Id == 'root'){
                 this.Body = WLibHTMLObject.Get (this.Parent.Id).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
-                this.Body.className = "WLibRoot";
+                this.Body.className = "WLibWidget";
             }else {
                 this.Body = WLibHTMLObject.Get (this.GetHTMLId(this.Parent.Id)).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
                 this.Body.className = "WLibWidget";
@@ -46,8 +46,18 @@ class WLibWidget {
             
         }else {
             this.Body = WLibHTMLObject.Get (args.Id);
-            this.Body.className = "WLibWidget";
+            this.Body.className = "WLibRoot";
+            this.Body.style.margin = '0px';
+            this.Body.style.padding = '0px';
         }
+
+        if(args.className){
+            this.Body.className = args.className;
+        }
+
+        this.Body.style.position = 'absolute';
+        this.Body.style.overflow = 'hidden';
+        this.Body.style.boxSizing = 'border-box';
         
         this.whenResize = new WLibTypes.FunctionArray();
         //this.whenScroll = new WLibTypes.FunctionArray();
@@ -65,13 +75,19 @@ class WLibWidget {
         this.whenMouseWheel = new WLibTypes.FunctionArray();
         this.whenRightClick = new WLibTypes.FunctionArray();
 
+        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
+
+            args.Widget.InitPosition ();
+
+        }, parameters : {Widget : this}}));
+
         this.Init();
+        
 
     }
 
     Init () {
         this.InitPosition ();
-        this.InitEvents ();
     }
 
     InitPosition () {
@@ -83,16 +99,14 @@ class WLibWidget {
             this.Dimensions.Width = window.innerWidth;
             this.Dimensions.Height = window.innerHeight;
 
-            this.Body.style.position = 'absolute';
-            this.Body.style.overflow = 'hidden';
-            this.Body.style.boxSizing = 'border-box';
-            this.Body.style.margin = '0px';
-            this.Body.style.padding = '0px';
+            this.setX (this.Position.Left);
+            this.setY (this.Position.Top);
+            this.setWH ({Width : this.Dimensions.Width, Height : this.Dimensions.Height});
 
-            this.Body.setX (this.Position.Left);
-            this.Body.setY (this.Position.Top);
-            this.Body.setW (this.Dimensions.Width);
-            this.Body.setH (this.Dimensions.Height);
+            this.handler = setInterval(function (args){
+                args.Widget.setWH ({Width : args.Widget.Dimensions.Width, Height : args.Widget.Dimensions.Height});
+                clearInterval (args.Widget.handler);
+            }, 100, {Widget : this});
             
         }else {
 
@@ -132,27 +146,12 @@ class WLibWidget {
     
             }
 
-            this.Body.style.position = 'absolute';
-            this.Body.style.overflow = 'hidden';
-            this.Body.style.boxSizing = 'border-box';
-
-            this.Body.setX (this.Position.Left);
-            this.Body.setY (this.Position.Top);
-            this.Body.setW (this.Dimensions.Width);
-            this.Body.setH (this.Dimensions.Height);
+            this.setX (this.Position.Left);
+            this.setY (this.Position.Top);
+            this.setWH ({Width : this.Dimensions.Width, Height : this.Dimensions.Height});
 
         }
         
-    }
-
-    InitEvents () {
-
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({fn : function (args){
-
-            args.Widget.Resize ();
-
-        }, parameters : {Widget : this}}));
-
     }
 
     GetHTMLId (args){
@@ -168,7 +167,6 @@ class WLibWidget {
     }
 
     Resize (args) {
-        this.InitPosition ();
         this.whenResize.Run ();
     }
 
@@ -195,6 +193,14 @@ class WLibWidget {
     setH (args) {
         this.Dimensions.Height = args;
         this.Body.setH (args);
+        this.Resize ();
+    }
+
+    setWH (args) {
+        this.Dimensions.Width = args.Width;
+        this.Body.setW (args.Width);
+        this.Dimensions.Height = args.Height;
+        this.Body.setH (args.Height);
         this.Resize ();
     }
 

@@ -5,6 +5,7 @@ class WLibPage {
         this.whenLoad = new WLibTypes.FunctionArray ();
         this.whenResize = new WLibTypes.FunctionArray ();
     }
+
 }
 
 export {WLibPage}

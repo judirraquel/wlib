@@ -1,6 +1,6 @@
 class FunctionIt{
     constructor (args) {
-        this.id = args.id ? args.id : undefined;
+        this.Id = args.Id ? args.Id : undefined;
         this.fn = args.fn ? args.fn : function(){};
         this.parameters = args.parameters ? args.parameters : {};
     }

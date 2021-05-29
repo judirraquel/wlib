@@ -1,0 +1,19 @@
+div.WLibPanelHandler {
+    color: #fff;
+    background-color: #323546;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+}
+
+div.WLibPanelHandler_mouse_over {
+    color: #fff;
+    background-color: #2B2E39;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+}

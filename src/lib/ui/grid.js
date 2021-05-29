@@ -2,6 +2,7 @@ import { WLibTypes } from "../types.js";
 import { WLibWidget, WLibWidgetAlign } from "./widget.js";
 
 class WLibWidgetGrid extends WLibWidget {
+    
     constructor(args) {
 
         super(args);
@@ -13,20 +14,22 @@ class WLibWidgetGrid extends WLibWidget {
         this.ColumnsWidth = undefined;
         this.Rows = args.Rows ? args.Rows : [{ Height: 25 }, {Height : 30}, {Height : undefined}];
         this.RowsHeight = undefined;
-
-        //Utilizo CellPosition para referirme a la combinación de una fila y una columna y guardar la posicion que ocupa.
         this.CellPosition = undefined; // Ejemplo [{Column : 0, Row : 0, Left : 10, Top : 10}, {...}]
-        //Utilizo Cell Widget para asignarle a cada celda un widget de contenido.
         this.CellWidget = new Array (); // Ejemplo [{Column : 0, Row : 0, Widget : undefined}, {...}]
 
         this.Configure ();
 
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({fn : function (args){
+        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
 
             args.Widget.Configure ();
-            args.Widget.Display ();
 
         }, parameters : {Widget : this}}));
+
+    }
+
+    Resize () {
+        
+        this.whenResize.Run ();
 
     }
 
@@ -35,6 +38,7 @@ class WLibWidgetGrid extends WLibWidget {
         for (let i = 0; i < this.CellWidget.length; i++) {
 
             let Widget = this.CellWidget[i].Widget;
+
             let Position = this.GetCellPosition ({Column : this.CellWidget[i].Column, Row : this.CellWidget[i].Row});
             let Left = Position.Left;
             let Top = Position.Top;
@@ -43,8 +47,7 @@ class WLibWidgetGrid extends WLibWidget {
 
             Widget.setX (Left);
             Widget.setY (Top);
-            Widget.setW (Width);
-            Widget.setH (Height);
+            Widget.setWH ({Width : Width, Height : Height});
 
         }
 
@@ -63,6 +66,7 @@ class WLibWidgetGrid extends WLibWidget {
         this.ConfigureColumns ();
         this.ConfigureRows ();
         this.ConfigurePositions ();
+        this.Display ();
 
     }
 
