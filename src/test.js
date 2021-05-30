@@ -5,6 +5,8 @@ import { WLibWidgetGrid } from "./lib/ui/grid.js";
 import { WLibWidgetToolbar } from "./lib/ui/toolbar.js";
 import { WLibWidgetButton, WLibWidgetButtonTypes } from "./lib/ui/button.js";
 import { WLibWidgetCanvas } from "./lib/ui/canvas.js";
+import { WLibWidgetVerticalScroll } from "./lib/ui/vertical_scroll.js";
+import { WLibWidgetSimpleDataGrid } from "./lib/ui/simple_data_grid.js";
 
 WLib.LoadTheme("themes/dark/theme.css");
 
@@ -14,7 +16,7 @@ let main_layout = new WLibWidgetGrid({
     HAlign: WLibWidgetAlign.FILL,
     VAlign: WLibWidgetAlign.FILL,
     Columns: [{ Width: undefined }],
-    Rows: [{ Height: 40 }, { Height: undefined }, { Height: 40 }],
+    Rows: [{ Height: 40 }, { Height: undefined }, { Height: 25 }],
 });
 
 let toolbar = new WLibWidgetToolbar({ Id: "Toolbar", Parent: main_layout });
@@ -217,11 +219,32 @@ let panel2 = new WLibWidgetPanel({
 
 let canvas = new WLibWidgetCanvas ({Id: 'Canvas1', Parent : panel2, HAlign : WLibWidgetAlign.CUSTOM, VAlign : WLibWidgetAlign.CUSTOM});
 
+let SimpleGrid = new WLibWidgetSimpleDataGrid ({
+    Id: 'SimpleGrid',
+    Parent : panel1,
+    HAlign : WLibWidgetAlign.CUSTOM,
+    VAlign : WLibWidgetAlign.CUSTOM,
+    Columns : [{Header : "Operacion 1" , Width: 200}, {Header : "Obsservaciones" , Width: undefined}, {Header : "Proffit" , Width: 200}]
+});
+
+let GridObjects = new WLibWidgetSimpleDataGrid ({
+    Id: 'GridObjects',
+    Parent : panel2,
+    HAlign : WLibWidgetAlign.CUSTOM,
+    VAlign : WLibWidgetAlign.CUSTOM,
+    Columns : [{Header : "Objects Manager" , Width: undefined}]
+});
+
+SimpleGrid.Configure ();
+GridObjects.Configure ();
+
 main_layout.Atach({ Column: 0, Row: 1, Widget: panel1 });
 main_layout.Atach({ Column: 0, Row: 0, Widget: toolbar });
 panel1.Atach({ Row: 0, Column: 0, Widget: panel2 });
+panel1.Atach({ Row: 2, Column: 0, Widget: SimpleGrid });
 
 panel2.Atach({ Row: 0, Column: 2, Widget: canvas });
+panel2.Atach({ Row: 0, Column: 0, Widget: GridObjects });
 
 main_layout.Configure();
 panel1.Configure();

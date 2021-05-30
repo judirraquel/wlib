@@ -13,10 +13,17 @@ class WebLib {
             EMail : 'horaciodrs@gmail.com'
         };
 
+        this.Mouse = {
+            X : undefined,
+            Y : undefined
+        }
+
         this.Types = WLibTypes;
         this.Page = new WLibPage ();
 
         this.Root = new WLibWidget({Id : 'root', Parent : this.Page});
+
+        
 
     }
 
@@ -33,6 +40,14 @@ class WebLib {
         window.onresize = function () {
             WLib.Page.whenResize.Run();
         };
+
+        this.Root.Body.whenMouseMove.Add (new WLibTypes.FunctionItem ({fn : function (args){
+
+            var auxEvent = args.Event ? args.Event : window.event;
+	        WLib.Mouse.X = auxEvent.clientX;
+	        WLib.Mouse.Y = auxEvent.clientY;
+
+        }, parameters : {}}));
 
         this.LoadFonts ();
         this.LoadIcons ();

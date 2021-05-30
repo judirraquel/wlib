@@ -5,8 +5,16 @@ class FunctionIt{
         this.parameters = args.parameters ? args.parameters : {};
     }
 
-    Run (){
-        this.fn (this.parameters);
+    Run (args){
+
+        let params = this.parameters;
+
+        if (args){
+            params['Event'] = args.Event ? args.Event : undefined;
+        }
+
+        this.fn (params);
+
     }
 }
 

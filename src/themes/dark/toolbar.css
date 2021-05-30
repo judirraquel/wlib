@@ -7,4 +7,5 @@ div.WLibWidgetToolbar {
     font-size: 1rem;
     letter-spacing: .15rem;
     transition: all .3s;
+    cursor: default;
 }

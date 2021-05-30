@@ -3,6 +3,7 @@
 @import "button.css";
 @import "panel.css";
 @import "toolbar.css";
+@import "vertical_scroll.css";
 
 div.WLibRoot{
     background: rgb(34,37,49);

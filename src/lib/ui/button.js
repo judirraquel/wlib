@@ -7,6 +7,7 @@ const WLibWidgetButtonTypes = {
     DANGER : 2,
     PLAIN : 3,
     TOOLBAR : 4,
+    HEADER : 5
 }
 
 class WLibWidgetButton extends WLibWidget {
@@ -32,6 +33,8 @@ class WLibWidgetButton extends WLibWidget {
             this.BaseClassName += "Plain";
         }else if(this.Type == WLibWidgetButtonTypes.TOOLBAR){
             this.BaseClassName += "Toolbar";
+        }else if(this.Type == WLibWidgetButtonTypes.HEADER){
+            this.BaseClassName += "Header";
         }
 
         this.Body.className = this.BaseClassName;

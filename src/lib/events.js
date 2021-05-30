@@ -26,8 +26,8 @@ function WLibExtendEvents (obj) {
         obj.whenFocus.Run();
     }, false);
 
-    obj.addEventListener ('mousemove', function (){
-        obj.whenMouseMove.Run();
+    obj.addEventListener ('mousemove', function (ev){
+        obj.whenMouseMove.Run({Event : ev});
     }, false);
 
     obj.addEventListener ('mouseover', function (){

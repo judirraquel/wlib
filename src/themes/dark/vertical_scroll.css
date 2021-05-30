@@ -1,0 +1,38 @@
+/*WLibWidgetVerticalScroll*/
+
+div.WLibWidgetVerticalScroll_VScrollBar{
+    border-radius: 5px;
+    color: #fff;
+    background-color: #323546;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    opacity: 0.0;
+}
+
+div.WLibWidgetVerticalScroll_VScrollBar_Cerca{
+    border-radius: 5px;
+    color: #fff;
+    background-color: #323546;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    opacity: 0.3;
+}
+
+div.WLibWidgetVerticalScroll_VScrollBar_mouse_over{
+    border-radius: 5px;
+    color: #fff;
+    background-color: #3861FB;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all 1s;
+    opacity: 1.0;
+}
+

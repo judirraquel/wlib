@@ -47,9 +47,9 @@ class FunctionArr{
         this.Items.push (pFn);
     }
 
-    Run (){
+    Run (args){
         this.Items.forEach (function(current_fn, i) {
-            current_fn.Run ();
+            current_fn.Run (args);
         });
     }
 }
