@@ -4,7 +4,9 @@ import { WLibWidget } from "./widget.js";
 const WLibWidgetButtonTypes = {
     PRIMARY : 0,
     SECONDARY : 1,
-    DANGER : 2
+    DANGER : 2,
+    PLAIN : 3,
+    TOOLBAR : 4,
 }
 
 class WLibWidgetButton extends WLibWidget {
@@ -26,6 +28,10 @@ class WLibWidgetButton extends WLibWidget {
             this.BaseClassName += "Secondary";
         }else if(this.Type == WLibWidgetButtonTypes.DANGER){
             this.BaseClassName += "Danger";
+        }else if(this.Type == WLibWidgetButtonTypes.PLAIN){
+            this.BaseClassName += "Plain";
+        }else if(this.Type == WLibWidgetButtonTypes.TOOLBAR){
+            this.BaseClassName += "Toolbar";
         }
 
         this.Body.className = this.BaseClassName;

@@ -1,3 +1,46 @@
+div.WLibWidgetButtonPlain {
+  border-radius: 5px;
+  color: #fff;
+  background-color: transparent;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: .15rem;
+  transition: all .3s;
+}
+
+div.WLibWidgetButtonPlain_mouse_over {
+    border-radius: 5px;
+    color: #fff;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+}
+
+div.WLibWidgetButtonToolbar {
+  border-radius: 5px;
+  color: #fff;
+  background-color: #303242;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: .15rem;
+  transition: all .3s;
+}
+
+div.WLibWidgetButtonToolbar_mouse_over {
+    border-radius: 5px;
+    color: #fff;
+    background-color: #2B2E39;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+}
 
 div.WLibWidgetButtonPrimary {
     border-radius: 5px;

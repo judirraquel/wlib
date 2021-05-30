@@ -1,0 +1,10 @@
+div.WLibWidgetToolbar {
+    color: #fff;
+    background-color: #17171A;
+    border-bottom : solid 2px #323546;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+}

@@ -13,7 +13,7 @@ class WLibWidgetPanel extends WLibWidgetGrid{
 
         let cursor_style = "";
 
-        const handler_size = 6;
+        const handler_size = 4;
 
         if (args.Type == WLibWidgetPanelTypes.VERTICAL) {
             args['Columns'] = [{Width : 200}, {Width : handler_size}, {Width : undefined}];
@@ -21,7 +21,7 @@ class WLibWidgetPanel extends WLibWidgetGrid{
             cursor_style = "e-resize";
         }else if (args.Type == WLibWidgetPanelTypes.HORIZONTAL) {
             args['Columns'] = [{Width : undefined}];
-            args['Rows'] = [{Height : undefined}, {Height : handler_size}, {Height : 200}];
+            args['Rows'] = [{Height : undefined}, {Height : handler_size}, {Height : 150}];
             cursor_style = "n-resize";
         }
 
