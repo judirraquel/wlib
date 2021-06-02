@@ -28,7 +28,7 @@ class WLibApplicationInterface extends WLibWidgetGrid{
 
     Render (){
 
-        super.Configure();
+        super.Resize();
 
     }
 

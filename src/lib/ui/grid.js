@@ -19,18 +19,34 @@ class WLibWidgetGrid extends WLibWidget {
 
         this.Configure ();
 
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
+        /*this.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
 
-            args.Widget.Configure ();
+            if (args.Widget.Childs){
+                for (let i = 0; i < args.Widget.Childs.length; i++){
+                    args.Widget.Childs[i].Resize ();
+                }
+            }
 
-        }, parameters : {Widget : this}}));
+        }, parameters : {Widget : this}}));*/
 
     }
 
     Resize () {
-        
-        this.whenResize.Run ();
 
+        
+        
+        this.Configure ();
+
+        super.Resize ();
+
+        /*if (this.Childs){
+            for (let i = 0; i < this.Childs.length; i++){
+                this.Childs[i].Resize ();
+            }
+        }*/
+
+        //this.whenResize.Run ();
+        //super.Resize ();
     }
 
     Display () {

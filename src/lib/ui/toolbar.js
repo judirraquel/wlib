@@ -1,8 +1,11 @@
 import { WLibTypes } from "../types.js";
-import { WLibWidget } from "./widget.js";
+import { WLibWidget, WLibWidgetAlign } from "./widget.js";
 
 class WLibWidgetToolbar extends WLibWidget {
     constructor(args) {
+
+        args['HAling'] = WLibWidgetAlign.CUSTOM;
+        args['VAlign'] = WLibWidgetAlign.CUSTOM;
 
         super(args);
 
@@ -14,12 +17,11 @@ class WLibWidgetToolbar extends WLibWidget {
         this.Buttons = new Array ();
         this.ButtonsRight = new Array ();
 
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
+    }
 
-            args.Widget.Configure ();
-
-        }, parameters : {Widget : this}}));
-
+    Resize (){
+        this.Configure ();
+        super.Resize ();
     }
 
     AddButton (args) {

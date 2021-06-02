@@ -55,6 +55,11 @@ class WLibWidgetButton extends WLibWidget {
 
     }
 
+    Resize () {
+        this.Body.style.lineHeight = this.Dimensions.Height + 'px';
+        super.Resize ();
+    }
+
     setText(args) {
 
         this.Text = args;
@@ -65,11 +70,9 @@ class WLibWidgetButton extends WLibWidget {
             html += '<div class="material-icons  md-18" style="margin-right: 5px; position: relative; top: 4px;">' + this.Icon + '</div>';
         }
         
-        if (this.Text != ""){
+        if (this.Text){
             html += '<span>' + this.Text + '</span>';
         }
-
-        
 
         this.Body.html(html);
         this.Body.style.fontSize = 'small';

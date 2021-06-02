@@ -48,9 +48,11 @@ class FunctionArr{
     }
 
     Run (args){
+
         this.Items.forEach (function(current_fn, i) {
             current_fn.Run (args);
         });
+
     }
 }
 

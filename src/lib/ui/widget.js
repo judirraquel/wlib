@@ -35,6 +35,18 @@ class WLibWidget {
         this.Visible = args.Visible ? args.Visible : true;
         this.Parent = args.Parent ? args.Parent : undefined; //Es un objeto del Tipo Widget. No es el elemento HTML.
 
+        this.Childs = new Array ();
+
+        if (this.Parent){
+            if (this.Parent.Childs){
+                this.Parent.Childs.push (this);
+            }
+            if (this.Id == 'root'){
+                this.Parent.SetChild (this);
+
+            }
+        }
+
         if (this.Id != 'root'){
             if (this.Parent.Id == 'root'){
                 this.Body = WLibHTMLObject.Get (this.Parent.Id).add({tagName : 'div', Id : this.GetHTMLId(args.Id)});
@@ -75,11 +87,12 @@ class WLibWidget {
         this.whenMouseWheel = new WLibTypes.FunctionArray();
         this.whenRightClick = new WLibTypes.FunctionArray();
 
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
-
-            args.Widget.InitPosition ();
-
-        }, parameters : {Widget : this}}));
+        if (this.Id == 'root'){
+            //en este caso el parent es WLib.Page
+            this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
+                args.Widget.Resize ();
+            }, parameters : {Widget : this}}));
+        }
 
         this.Init();
         
@@ -103,10 +116,10 @@ class WLibWidget {
             this.setY (this.Position.Top);
             this.setWH ({Width : this.Dimensions.Width, Height : this.Dimensions.Height});
 
-            this.handler = setInterval(function (args){
+            /*this.handler = setInterval(function (args){
                 args.Widget.setWH ({Width : args.Widget.Dimensions.Width, Height : args.Widget.Dimensions.Height});
                 clearInterval (args.Widget.handler);
-            }, 100, {Widget : this});
+            }, 100, {Widget : this});*/
             
         }else {
 
@@ -167,7 +180,15 @@ class WLibWidget {
     }
 
     Resize (args) {
-        this.whenResize.Run ();
+
+        this.InitPosition ();
+
+        if (this.Childs){
+            for (let i = 0; i < this.Childs.length; i++){
+                this.Childs[i].Resize ();
+            }
+        }
+        
     }
 
     Add (args) {
@@ -187,13 +208,13 @@ class WLibWidget {
     setW (args) {
         this.Dimensions.Width = args;
         this.Body.setW (args);
-        this.Resize ();
+        //this.Resize ();
     }
 
     setH (args) {
         this.Dimensions.Height = args;
         this.Body.setH (args);
-        this.Resize ();
+        //this.Resize ();
     }
 
     setWH (args) {
@@ -201,7 +222,7 @@ class WLibWidget {
         this.Body.setW (args.Width);
         this.Dimensions.Height = args.Height;
         this.Body.setH (args.Height);
-        this.Resize ();
+        //this.Resize ();
     }
 
 }

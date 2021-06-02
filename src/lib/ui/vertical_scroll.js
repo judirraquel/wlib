@@ -54,11 +54,6 @@ class WLibWidgetVerticalScroll extends WLibWidget {
             args.Widget.ScrollBody.className = args.Widget.ScrollBarBaseClassName;
         }, parameters: {Widget : this}}));
 
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
-            args.Widget.Configure ();
-        }, parameters : {Widget : this}}));
-
-
     }
 
     Configure () {
@@ -68,6 +63,11 @@ class WLibWidgetVerticalScroll extends WLibWidget {
         this.ScrollBody.setW (this.ScrollBarWidth);
         this.ScrollBody.setH (this.Dimensions.Height-this.Padding*2);
 
+    }
+
+    Resize (){
+        this.Configure ();
+        super.Resize ();
     }
 
 }

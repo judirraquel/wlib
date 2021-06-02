@@ -47,9 +47,9 @@ class WLibWidgetSimpleDataGrid extends WLibWidget {
 
         this.Configure();
 
-        this.Parent.whenResize.Add(new WLibTypes.FunctionItem({Id: this.Id,fn: function (args) {
+        /*this.Parent.whenResize.Add(new WLibTypes.FunctionItem({Id: this.Id,fn: function (args) {
             args.Widget.Configure();
-        },parameters: { Widget: this },}));
+        },parameters: { Widget: this },}));*/
     }
 
     Configure() {
@@ -57,6 +57,13 @@ class WLibWidgetSimpleDataGrid extends WLibWidget {
         this.Layout.Configure ();
         this.VScroll.Configure ();
 
+    }
+
+    Resize () {
+        
+        this.Configure ();
+        super.Resize ();
+        
     }
 
     CreateHeaders () {

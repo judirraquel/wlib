@@ -10,22 +10,22 @@ class WLibWidgetCanvas extends WLibWidget {
 
         this.Canvas = this.Body.add ({tagName : 'canvas', Id : this.Id + '.Canvas'});
 
-        this.Parent.whenResize.Add (new WLibTypes.FunctionItem ({Id : this.Id, fn : function (args){
-
-            args.Widget.Configure ();
-
-        }, parameters : {Widget : this}}));
+        this.Canvas.style.border = 'solid 1px white;';
 
         this.Configure ();
+        
 
+    }
+
+    Resize (){
+        this.Configure ();
+        super.Resize ();
     }
 
     Configure () {
 
-        this.Canvas.width = this.Dimensions.Width;
-        this.Canvas.height = this.Dimensions.Height;
-
-        //configure...
+        this.Canvas.width = this.Body.clientWidth;
+        this.Canvas.height = this.Body.clientHeight;
 
     }
 
