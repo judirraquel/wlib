@@ -9,6 +9,8 @@ import { WLibWidgetVerticalScroll } from "./lib/ui/vertical_scroll.js";
 import { WLibWidgetSimpleDataGrid } from "./lib/ui/simple_data_grid.js";
 
 WLib.LoadTheme("themes/dark/theme.css");
+WLib.LoadIcons("icons/icons.css");
+WLib.LoadFonts("font/");
 
 let main_layout = new WLibWidgetGrid({
     Id: "MainLayout",

@@ -49,15 +49,15 @@ class WebLib {
 
         }, parameters : {}}));
 
-        this.LoadFonts ();
-        this.LoadIcons ();
-
     }
 
-    LoadFonts () {
+    LoadFonts (args) {
 
-        const Font = new FontFace('Roboto', 'url(font/Roboto-Regular.ttf)');
-        const FontBold = new FontFace('Roboto', 'url(font/Roboto-Bold.ttf');
+        //const Font = new FontFace('Roboto', 'url(font/Roboto-Regular.ttf)');
+        //const FontBold = new FontFace('Roboto', 'url(font/Roboto-Bold.ttf');
+
+        const Font = new FontFace('Roboto', 'url('+args+'Roboto-Regular.ttf)');
+        const FontBold = new FontFace('Roboto', 'url('+args+'Roboto-Bold.ttf');
 
         FontBold.weight = 'bold';
 
@@ -72,12 +72,12 @@ class WebLib {
 
     }
 
-    LoadIcons () {
+    LoadIcons (args) {
         let head = document.getElementsByTagName('HEAD')[0]; 
         let link = document.createElement('link');
         link.rel = 'stylesheet'; 
         link.type = 'text/css';
-        link.href = "icons/icons.css"; 
+        link.href = args;//"icons/icons.css"; 
         head.appendChild(link); 
     }
 
