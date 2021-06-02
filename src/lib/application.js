@@ -7,7 +7,7 @@ class WLibApplication{
     }
 
     Configure (){
-        this.Interface.Configure ();
+        this.Interface.Render ();
     }
 
 }
