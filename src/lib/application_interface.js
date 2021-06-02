@@ -8,15 +8,15 @@ class WLibApplicationInterface extends WLibWidgetGrid{
 
         //Los parametros Column and Rows deben venir en args.
 
-        this.Root = WLib.Root;
-        this.Theme = args.Theme ? args.Theme : "themes/dark/theme.css";
-
         args['Id'] = 'MainLayout';
-        args['Parent'] = this.Root;
+        args['Parent'] = WLib.Root;
         args['HAling'] = WLibWidgetAlign.FILL;
         args['VAlign'] = WLibWidgetAlign.FILL;
 
         super(args);
+
+        this.Root = WLib.Root;
+        this.Theme = args.Theme ? args.Theme : "themes/dark/theme.css";
 
         WLib.LoadTheme(this.Theme);
 
