@@ -11,3 +11,5 @@ class WLibApplication{
     }
 
 }
+
+export { WLibApplication };
