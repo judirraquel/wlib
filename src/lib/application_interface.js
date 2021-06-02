@@ -17,8 +17,12 @@ class WLibApplicationInterface extends WLibWidgetGrid{
 
         this.Root = WLib.Root;
         this.Theme = args.Theme ? args.Theme : "themes/dark/theme.css";
+        this.Fonts = args.Fonts ? args.Fonts : "font/";
+        this.Icons = args.Icons ? args.Icons : "icons/icons.css";
 
         WLib.LoadTheme(this.Theme);
+        WLib.LoadFonts(this.Fonts);
+        WLib.LoadIcons(this.Icons);
 
     }
 
