@@ -29,3 +29,5 @@ class WLibApplicationInterfaz extends WLibWidgetGrid{
     }
 
 }
+
+export { WLibApplicationInterfaz };
