@@ -2,7 +2,7 @@ import { WLib } from "../wlib.core.js";
 import { WLibWidgetGrid } from "./ui/grid.js";
 import { WLibWidgetAlign } from "./ui/widget.js";
 
-class WLibApplicationInterfaz extends WLibWidgetGrid{
+class WLibApplicationInterface extends WLibWidgetGrid{
 
     constructor (args) {
 
@@ -30,4 +30,4 @@ class WLibApplicationInterfaz extends WLibWidgetGrid{
 
 }
 
-export { WLibApplicationInterfaz };
+export { WLibApplicationInterface };
