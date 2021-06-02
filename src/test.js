@@ -25,7 +25,7 @@ let btn0 = new WLibWidgetButton({
     Id: "btn0",
     Parent: toolbar,
     Icon: "pets",
-    Text: "TardeSim",
+    Text: "TradeSim",
     HAlign: WLibWidgetAlign.CUSTOM,
     VAlign: WLibWidgetAlign.CUSTOM,
     Width: 120,
